@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import expressAsyncError from 'express-async-errors'
 import express from 'express'
+import sendEmail from './controller/sendEmail.js'
 
 dotenv.config()
 const app = express()
@@ -17,6 +18,8 @@ app.get('/', (req, res) => {
     res.send('<h1>Email Project<h1> <a href="/send">Send Email</a>')
 
 })
+
+app.get('/send', sendEmail)
 
 app.use(notFoundMiddlewere)
 app.use(errorHandlerMiddlewere)
